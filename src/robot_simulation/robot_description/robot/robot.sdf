@@ -1,0 +1,862 @@
+<sdf version='1.7'>
+  <model name='acs_robot'>
+    <link name='base_footprint'>
+      <inertial>
+        <pose>0.108878 0 0.091122 0 -0 0</pose>
+        <mass>9.8</mass>
+        <inertia>
+          <ixx>0.0861977</ixx>
+          <ixy>-0.0017</ixy>
+          <ixz>-0.000502347</ixz>
+          <iyy>0.412395</iyy>
+          <iyz>-0.0008</iyz>
+          <izz>0.441198</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_footprint_fixed_joint_lump__base_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/STL/base/base_link.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.05</mu>
+              <mu2>0.05</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='base_footprint_fixed_joint_lump__base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/DAE/base/base_link.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <self_collide>0</self_collide>
+      <sensor name='imu_sensor' type='imu'>
+        <always_on>1</always_on>
+        <update_rate>100</update_rate>
+        <visualize>1</visualize>
+        <topic>imu</topic>
+        <pose>0 0 0 0 -0 0</pose>
+      </sensor>
+    </link>
+    <joint name='front_left_leg_joint' type='revolute'>
+      <pose relative_to='base_footprint'>0.282 0.06 0.090255 1.5708 1.5708 0</pose>
+      <parent>base_footprint</parent>
+      <child>front_left_leg_joint_link</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>500</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.005</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front_left_leg_joint_link'>
+      <pose relative_to='front_left_leg_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.038 0 -0 0</pose>
+        <mass>1.16</mass>
+        <inertia>
+          <ixx>0.002</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.002</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_left_leg_joint_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/STL/leg_joint/leg_joint.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.2</mu>
+              <mu2>0.2</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='front_left_leg_joint_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/DAE/leg_joint/leg_joint.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='front_left_thigh_joint' type='revolute'>
+      <pose relative_to='front_left_leg_joint_link'>0 0 -0.114 1.5708 -0 -1.5708</pose>
+      <parent>front_left_leg_joint_link</parent>
+      <child>front_left_thigh_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3</lower>
+          <upper>3</upper>
+          <effort>500</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.005</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front_left_thigh_link'>
+      <pose relative_to='front_left_thigh_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.17 -0.028 0.014 0 -0 0</pose>
+        <mass>1.24</mass>
+        <inertia>
+          <ixx>0.002</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.002</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_left_thigh_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/STL/left_thigh/left_thigh.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.2</mu>
+              <mu2>0.2</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='front_left_thigh_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/DAE/left_thigh/left_thigh.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='front_left_shin_joint' type='revolute'>
+      <pose relative_to='front_left_thigh_link'>0.426 -0.0285 0 0 -0 0</pose>
+      <parent>front_left_thigh_link</parent>
+      <child>front_left_shin_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>500</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.005</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front_left_shin_link'>
+      <pose relative_to='front_left_shin_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>-0.158 0.011 0 0 -0 0</pose>
+        <mass>0.66</mass>
+        <inertia>
+          <ixx>0.0003</ixx>
+          <ixy>0.0013</ixy>
+          <ixz>4.5e-05</ixz>
+          <iyy>0.029</iyy>
+          <iyz>-3e-06</iyz>
+          <izz>0.029</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_left_shin_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/STL/shin/shin.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>1e+06</kp>
+              <kd>100</kd>
+              <min_depth>0.0002</min_depth>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='front_left_shin_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/DAE/shin/shin.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='front_right_leg_joint' type='revolute'>
+      <pose relative_to='base_footprint'>0.282 -0.06 0.090255 -1.5708 -1.5708 0</pose>
+      <parent>base_footprint</parent>
+      <child>front_right_leg_joint_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>500</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.005</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front_right_leg_joint_link'>
+      <pose relative_to='front_right_leg_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.038 0 -0 0</pose>
+        <mass>1.16</mass>
+        <inertia>
+          <ixx>0.002</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.002</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_right_leg_joint_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/STL/leg_joint/leg_joint.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.2</mu>
+              <mu2>0.2</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='front_right_leg_joint_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/DAE/leg_joint/leg_joint.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='front_right_thigh_joint' type='revolute'>
+      <pose relative_to='front_right_leg_joint_link'>0 0 -0.114 1.5708 -0 -1.5708</pose>
+      <parent>front_right_leg_joint_link</parent>
+      <child>front_right_thigh_link</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-3</lower>
+          <upper>3</upper>
+          <effort>500</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.005</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front_right_thigh_link'>
+      <pose relative_to='front_right_thigh_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.17 -0.028 -0.014 0 -0 0</pose>
+        <mass>1.24</mass>
+        <inertia>
+          <ixx>0.002</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.002</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_right_thigh_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/STL/right_thigh/right_thigh.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='front_right_thigh_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/DAE/right_thigh/right_thigh.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='front_right_shin_joint' type='revolute'>
+      <pose relative_to='front_right_thigh_link'>0.426 -0.0285 0 -3.14159 0 0</pose>
+      <parent>front_right_thigh_link</parent>
+      <child>front_right_shin_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>500</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.005</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front_right_shin_link'>
+      <pose relative_to='front_right_shin_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>-0.158 0.011 0 0 -0 0</pose>
+        <mass>0.66</mass>
+        <inertia>
+          <ixx>0.0003</ixx>
+          <ixy>0.0013</ixy>
+          <ixz>4.5e-05</ixz>
+          <iyy>0.029</iyy>
+          <iyz>-3e-06</iyz>
+          <izz>0.029</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_right_shin_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/STL/shin/shin.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>1e+06</kp>
+              <kd>100</kd>
+              <min_depth>0.0002</min_depth>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='front_right_shin_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/DAE/shin/shin.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='rear_left_leg_joint' type='revolute'>
+      <pose relative_to='base_footprint'>-0.277 0.06 0.089405 1.5708 1.5708 0</pose>
+      <parent>base_footprint</parent>
+      <child>rear_left_leg_joint_link</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>500</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.005</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rear_left_leg_joint_link'>
+      <pose relative_to='rear_left_leg_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.038 0 -0 0</pose>
+        <mass>1.16</mass>
+        <inertia>
+          <ixx>0.002</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.002</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='rear_left_leg_joint_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/STL/leg_joint/leg_joint.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.2</mu>
+              <mu2>0.2</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rear_left_leg_joint_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/DAE/leg_joint/leg_joint.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='rear_left_thigh_joint' type='revolute'>
+      <pose relative_to='rear_left_leg_joint_link'>0 0 -0.114 1.5708 -0 -1.5708</pose>
+      <parent>rear_left_leg_joint_link</parent>
+      <child>rear_left_thigh_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3</lower>
+          <upper>3</upper>
+          <effort>500</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.005</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rear_left_thigh_link'>
+      <pose relative_to='rear_left_thigh_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.17 -0.028 0.014 0 -0 0</pose>
+        <mass>1.24</mass>
+        <inertia>
+          <ixx>0.002</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.002</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='rear_left_thigh_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/STL/left_thigh/left_thigh.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.2</mu>
+              <mu2>0.2</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rear_left_thigh_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/DAE/left_thigh/left_thigh.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='rear_left_shin_joint' type='revolute'>
+      <pose relative_to='rear_left_thigh_link'>0.426 -0.0285 0 0 -0 0</pose>
+      <parent>rear_left_thigh_link</parent>
+      <child>rear_left_shin_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>500</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.005</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rear_left_shin_link'>
+      <pose relative_to='rear_left_shin_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>-0.158 0.011 0 0 -0 0</pose>
+        <mass>0.66</mass>
+        <inertia>
+          <ixx>0.0003</ixx>
+          <ixy>0.0013</ixy>
+          <ixz>4.5e-05</ixz>
+          <iyy>0.029</iyy>
+          <iyz>-3e-06</iyz>
+          <izz>0.029</izz>
+        </inertia>
+      </inertial>
+      <collision name='rear_left_shin_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/STL/shin/shin.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>1e+06</kp>
+              <kd>100</kd>
+              <min_depth>0.0002</min_depth>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rear_left_shin_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/DAE/shin/shin.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='rear_right_leg_joint' type='revolute'>
+      <pose relative_to='base_footprint'>-0.277 -0.06 0.089405 -1.5708 -1.5708 0</pose>
+      <parent>base_footprint</parent>
+      <child>rear_right_leg_joint_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>500</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.005</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rear_right_leg_joint_link'>
+      <pose relative_to='rear_right_leg_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.038 0 -0 0</pose>
+        <mass>1.16</mass>
+        <inertia>
+          <ixx>0.002</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.002</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='rear_right_leg_joint_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/STL/leg_joint/leg_joint.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.2</mu>
+              <mu2>0.2</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rear_right_leg_joint_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/DAE/leg_joint/leg_joint.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <self_collide>0</self_collide>
+    </link>
+    <joint name='rear_right_thigh_joint' type='revolute'>
+      <pose relative_to='rear_right_leg_joint_link'>0 0 -0.114 1.5708 -0 -1.5708</pose>
+      <parent>rear_right_leg_joint_link</parent>
+      <child>rear_right_thigh_link</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-3</lower>
+          <upper>3</upper>
+          <effort>500</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.005</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rear_right_thigh_link'>
+      <pose relative_to='rear_right_thigh_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.17 -0.028 -0.014 0 -0 0</pose>
+        <mass>1.24</mass>
+        <inertia>
+          <ixx>0.002</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.002</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+      <collision name='rear_right_thigh_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/STL/right_thigh/right_thigh.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='rear_right_thigh_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/DAE/right_thigh/right_thigh.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='rear_right_shin_joint' type='revolute'>
+      <pose relative_to='rear_right_thigh_link'>0.426 -0.0285 0 -3.14159 0 0</pose>
+      <parent>rear_right_thigh_link</parent>
+      <child>rear_right_shin_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>500</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.005</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rear_right_shin_link'>
+      <pose relative_to='rear_right_shin_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>-0.158 0.011 0 0 -0 0</pose>
+        <mass>0.66</mass>
+        <inertia>
+          <ixx>0.0003</ixx>
+          <ixy>0.0013</ixy>
+          <ixz>4.5e-05</ixz>
+          <iyy>0.029</iyy>
+          <iyz>-3e-06</iyz>
+          <izz>0.029</izz>
+        </inertia>
+      </inertial>
+      <collision name='rear_right_shin_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/STL/shin/shin.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>1e+06</kp>
+              <kd>100</kd>
+              <min_depth>0.0002</min_depth>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rear_right_shin_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://robot_description/meshes/DAE/shin/shin.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <self_collide>0</self_collide>
+    </link>
+    <plugin name='gz_ros2_control::GazeboSimROS2ControlPlugin' filename='gz_ros2_control-system'>
+      <parameters>/home/ashy/quadruped_robot_ROS2/install/robot_description/share/robot_description/config/robot_controller.yaml</parameters>
+    </plugin>
+    <plugin name='gz::sim::systems::JointStatePublisher' filename='libgz-sim-joint-state-publisher-system'/>
+    <plugin name='gz::sim::systems::PosePublisher' filename='libgz-sim-pose-publisher-system'>
+      <publish_link_pose>1</publish_link_pose>
+      <use_pose_vector_msg>1</use_pose_vector_msg>
+      <publish_nested_model_pose>1</publish_nested_model_pose>
+    </plugin>
+    <plugin name='ignition::gazebo::systems::Sensors' filename='ignition-gazebo-sensors-system'>
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin name='gz::sim::systems::Imu' filename='gz-sim-imu-system'/>
+    <static>0</static>
+    <sensor type='camera' name='camera_sensor'>
+      <update_rate>30</update_rate>
+      <camera>
+        <horizontal_fov>1.57</horizontal_fov>
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+      </camera>
+      <plugin name='camera_controller' filename='libgazebo_ros_camera.so'>
+        <ros>
+          <namespace>/camera</namespace>
+          <remapping>image:=/camera/image_raw</remapping>
+        </ros>
+      </plugin>
+    </sensor>
+  </model>
+</sdf>

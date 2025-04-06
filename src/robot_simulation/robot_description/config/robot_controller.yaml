@@ -1,0 +1,45 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 1000  # Hz
+
+    forward_position_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+forward_position_controller:
+  ros__parameters:
+    joints:
+      - front_right_leg_joint
+      - front_right_thigh_joint
+      - front_right_shin_joint
+      - front_left_leg_joint
+      - front_left_thigh_joint
+      - front_left_shin_joint
+      - rear_right_leg_joint
+      - rear_right_thigh_joint
+      - rear_right_shin_joint
+      - rear_left_leg_joint
+      - rear_left_thigh_joint
+      - rear_left_shin_joint
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+# Camera configuration added for OpenCV object detection
+camera:
+  ros__parameters:
+    camera_name: camera_sensor
+    topic: /camera/image_raw  # Topic for camera feed
+    frame_id: camera_link     # The camera's frame of reference in your robot
+    resolution:
+      width: 640
+      height: 480
+    field_of_view: 1.57      # Camera field of view (in radians)
+    near_clip: 0.1
+    far_clip: 100.0          # Clipping distances for camera view
+
